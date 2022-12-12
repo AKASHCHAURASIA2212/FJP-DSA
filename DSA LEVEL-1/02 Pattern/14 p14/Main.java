@@ -4,7 +4,7 @@ public class Main {
     public static void printPattern(int n) {
 
         for (int row = 1; row <= 10; row++) {
-            System.out.println(n + " * " + row + " = " + n * row);
+            System.out.println(n + " * " + row + " = " + n * row + " ");
         }
     }
 
