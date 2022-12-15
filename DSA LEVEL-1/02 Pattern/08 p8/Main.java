@@ -1,10 +1,3 @@
-package DSA
-
-LEVEL-1.02 Pattern.08p8;
-
-public class Main {
-    
-}
 
 import java.util.*;
 
