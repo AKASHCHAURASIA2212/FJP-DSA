@@ -17,45 +17,46 @@ public class Main {
         helper(n, k, a);
     }
 
-    public static void helper(int n, int k, int[] arr) {
-        Queue<Integer> qu1 = new LinkedList<>();
-        Queue<Integer> qu2 = new LinkedList<>();
-        int max = Integer.MIN_VALUE;
+    public static int[] solve(int[] arr) {
+        // solve
+        int[] ans = new int[arr.length];
+        Arrays.fill(ans, arr.length);
+        Stack<Integer> st = new Stack<>();
+        st.push(0);
+        for (int i = 1; i < arr.length; i++) {
+            int val = arr[i];
+            while (st.size() > 0 && val > arr[st.peek()]) {
+                ans[st.pop()] = i;
+            }
+            st.push(i);
+        }
+        return ans;
+    }
 
+    public static void display(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-
-            if (i < k) {
-                if (arr[i] > max) {
-                    max = arr[i];
-
-                }
-                qu1.add(arr[i]);
-            } else {
-                System.out.println(max);
-                int val = qu1.remove();
-                qu1.add(arr[i]);
-                if (max == val || arr[i] > max) {
-                    max = findMax(qu1, qu2);
-                }
-            }
+            System.out.print(arr[i] + "-");
         }
-        System.out.println(max);
+        System.out.println("\n-------------------------");
     }
 
-    public static int findMax(Queue<Integer> qu1, Queue<Integer> qu2) {
-        int max = Integer.MIN_VALUE;
-        while (qu1.size() != 0) {
-            int val = qu1.remove();
-            if (val > max) {
-                max = val;
+    public static void helper(int n, int k, int[] arr) {
+        int[] nge = solve(arr);
+        // display(nge);
+        int j = 0;
+        for (int i = 0; i < arr.length - k + 1; i++) {
+
+            j = i;
+
+            while (nge[j] < i + k) {
+                j = nge[j];
             }
-            qu2.add(val);
-        }
 
-        while (qu2.size() != 0) {
-            qu1.add(qu2.remove());
-        }
+            System.out.println(arr[j]);
 
-        return max;
+        }
+        // System.out.println(arr[j]);
+
     }
+
 }
