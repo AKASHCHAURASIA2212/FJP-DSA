@@ -79,7 +79,7 @@ public class Main {
             maxHeight = Math.max(recAns, maxHeight);
         }
 
-        return maxHeight + 1;
+        return maxHeight+1;
 
     }
 
